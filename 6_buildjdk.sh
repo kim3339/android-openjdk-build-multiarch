@@ -86,7 +86,7 @@ ln -s -f $CUPS_DIR/cups $ANDROID_INCLUDE/
 cd openjdk-${TARGET_VERSION}
 
 # Apply patches
-git reset --hard 01d107aea8eca4f4d2863deb30ac60e802debe15
+git reset --hard 01d107aea8eca4f4d2863deb30ac60e802debe15 || git reset --hard
 if [[ "$BUILD_IOS" != "1" ]]; then
   find ../patches/jre_${TARGET_VERSION}/android -name "*.diff" -print0 | xargs -0 -I {} sh -c 'echo "Applying {}" && git apply  --reject --whitespace=fix {} || (echo "git apply failed (Android patch set)" && exit 1)' 
 else
